@@ -3,7 +3,7 @@
 MVP scaffold for a forms platform.
 
 ## Stack
-- Frontend: Next.js + React + TypeScript + Tailwind (to be added)
+- Frontend: Next.js + React + TypeScript + Tailwind
 - Backend: Java 21 + Spring Boot 4 + Gradle
 - DB: PostgreSQL
 - Deploy: Docker
@@ -14,4 +14,7 @@ MVP scaffold for a forms platform.
 docker compose up --build
 ```
 
-Backend will be available at `http://localhost:8080`.
+Services:
+- Frontend: `http://localhost:3000`
+- Backend: `http://localhost:8080`
+- PostgreSQL: `localhost:5432`

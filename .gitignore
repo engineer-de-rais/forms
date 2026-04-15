@@ -1,8 +1,5 @@
 /.idea/
 
-# Gradle
 backend/.gradle/
 
 /backend/build/
-
-/backend/.gradle/
