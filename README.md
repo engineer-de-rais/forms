@@ -1,0 +1,20 @@
+# Forms Monorepo
+
+MVP scaffold for a forms platform.
+
+## Stack
+- Frontend: Next.js + React + TypeScript + Tailwind
+- Backend: Java 21 + Spring Boot 4 + Gradle
+- DB: PostgreSQL
+- Deploy: Docker
+
+## Quick start
+
+```bash
+docker compose up --build
+```
+
+Services:
+- Frontend: `http://localhost:3000`
+- Backend: `http://localhost:8080`
+- PostgreSQL: `localhost:5432`
