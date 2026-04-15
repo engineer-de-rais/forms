@@ -2,8 +2,9 @@ package com.example.forms.form.dto;
 
 import com.example.forms.form.entity.FormStatus;
 import java.time.Instant;
+import java.util.List;
 
-public record FormResponse(
+public record FormDetailsResponse(
     Long id,
     String title,
     String description,
@@ -13,6 +14,7 @@ public record FormResponse(
     boolean acceptingResponses,
     boolean publicAccess,
     Instant createdAt,
-    Instant updatedAt
+    Instant updatedAt,
+    List<FormQuestionResponse> questions
 ) {
 }

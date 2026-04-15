@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="ru">
+    <html lang="en">
       <body>
         <header className="border-b bg-white">
           <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
@@ -19,7 +19,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             </Link>
             <nav className="flex gap-4 text-sm">
               <Link href="/auth" className="hover:text-indigo-700">
-                Вход
+                Auth
               </Link>
               <Link href="/dashboard" className="hover:text-indigo-700">
                 Dashboard

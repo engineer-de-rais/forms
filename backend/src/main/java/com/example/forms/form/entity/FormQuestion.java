@@ -1,6 +1,6 @@
 package com.example.forms.form.entity;
 
-import com.example.forms.auth.entity.User;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -11,9 +11,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OrderBy;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,38 +26,51 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "forms")
-public class Form {
+@Table(name = "form_questions")
+public class FormQuestion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "owner_id", nullable = false)
-    private User owner;
+    @JoinColumn(name = "form_id", nullable = false)
+    private Form form;
 
     @Column(nullable = false)
+    private int position;
+
+    @Column(nullable = false)
+    private int section = 0;
+
+    @Column(nullable = false, length = 500)
     private String title;
 
     @Column(nullable = false)
     private String description = "";
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 64)
+    private QuestionType type;
+
     @Column(nullable = false)
-    private FormStatus status = FormStatus.DRAFT;
+    private boolean required = false;
 
-    @Column(nullable = false, unique = true)
-    private String slug;
+    @Column(name = "linear_min")
+    private Integer linearMin;
 
-    @Column(name = "theme", nullable = false)
-    private String theme = "classic";
+    @Column(name = "linear_max")
+    private Integer linearMax;
 
-    @Column(name = "accepting_responses", nullable = false)
-    private boolean acceptingResponses = true;
+    @Column(name = "linear_min_label")
+    private String linearMinLabel;
 
-    @Column(name = "public_access", nullable = false)
-    private boolean publicAccess = true;
+    @Column(name = "linear_max_label")
+    private String linearMaxLabel;
+
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OrderBy("position ASC")
+    private List<FormQuestionOption> options = new ArrayList<>();
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private Instant createdAt = Instant.now();
