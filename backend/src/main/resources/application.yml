@@ -22,3 +22,9 @@ security:
   jwt:
     secret: ${JWT_SECRET:eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJ0ZXN0QGV4YW1wbGUuY29tIiwiaWF0IjoxNzc2MjU4MTUxLCJleHAiOjE3NzYyNjE3NTF9.FgIa8JbtxOTwGfnoL7wXk2eQjGRNgZJ33LTy-s9Vb7v6NN_glSb10Gb5rjf6vOwk}
     ttl-seconds: ${JWT_TTL_SECONDS:3600}
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui/index.html
